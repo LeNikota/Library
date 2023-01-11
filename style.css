@@ -1,6 +1,160 @@
-:root{
-    --bg-color:#dce8f8;
-    --accent-color:#58e0f6;
-    --font-color:#1e2859;
-    --element-color:#ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+:root {
+  --bg-color: #dce8f8;
+  --accent-color: #58e0f6;
+  --font-color: #1e2859;
+  --font-color-inactive: #6d6d6d;
+  --element-color: white;
+  --border-color: #d3def1;
+  --checkbox-not-read: #9fff9c;
+  --checkbox-read: #ff9c9c;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+}
+
+body,
+input,
+button,
+::before,
+::after {
+  font-family: "Roboto", sans-serif;
+  color: var(--font-color);
+}
+
+input,
+button {
+  cursor: pointer;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.btn-container h1 {
+  display: inline;
+  margin-right: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  font-weight: bolder;
+  font-size: 2.1rem;
+}
+
+#add-book {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px 10px 0 10px;
+  border: none;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.btn-container > div:last-child {
+  padding-left: 20px;
+  border-left: var(--border-color) 3px solid;
+}
+
+.controls {
+  background: none;
+  border: none;
+  color: var(--font-color-inactive);
+  padding-bottom: 5px;
+  font-size: 1rem;
+  margin-right: 20px;
+}
+
+.controls.active {
+  background-color: none;
+  color: var(--font-color);
+  border-bottom: var(--font-color) 2px solid;
+  font-weight: bolder;
+}
+
+.books-container {
+  font-size: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.books-card {
+  background-color: var(--element-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.books-card h4 {
+  font-weight: bolder;
+  margin: 5px 0 20px 0;
+}
+
+.books-card p {
+  margin: 10px 0 0 0;
+  font-size: 0.9rem;
+}
+
+.books-card input[type="checkbox"] {
+  margin: 10px 0 0 0;
+  appearance: none;
+  border-radius: 2px;
+  background-color: var(--checkbox-not-read);
+  width: 100%;
+  height: 30px;
+  position: relative;
+}
+
+.books-card input[type="checkbox"]:checked {
+  background-color: var(--checkbox-read);
+}
+
+.books-card input[type="checkbox"]::before {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  color: black;
+}
+
+.books-card input[type="checkbox"]:not(:checked)::before {
+  content: "Read";
+}
+
+.books-card input[type="checkbox"]:checked::before {
+  content: "Not read";
+}
+
+.remove {
+  margin: 10px 0 0 0;
+  border: none;
+  width: 100%;
+  height: 30px;
+  color: black;
+}
+
+:is(input,button):hover{
+  filter: opacity(0.8);
+}
+
+:is(input,button):active{
+  filter: opacity(0.6);
 }

@@ -3,33 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="widp=device-widp, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Library</title>
   </head>
   <body>
-    <div class="btns-container">
-      <div>
-        <h1>Library</h1>
-        <button type="button">+</button>
+    <main>
+      <div class="btn-container">
+        <div class="logo">
+          <h1>Library</h1>
+          <button type="button" id="add-book">+</button>
+        </div>
+        <div class="controls-container">
+          <button class="controls active" type="button" id="book-table">
+            My books
+          </button>
+          <button class="controls" type="button" id="storage-selection">
+            Storage
+          </button>
+        </div>
       </div>
-      <div>
-        <button type="button" id="book-table"></button>
-        <button type="button" id="storage-selection"></button>
+      <div class="books-container">
+        <div class="books-card">
+          <h4>You Don't Know JS Yet</h4>
+          <p>Kyle Simpson</p>
+          <p>Pages: 279</p>
+          <input type="checkbox" name="read"/>
+          <button type="button" class="remove">Remove</button>
+        </div>
+        <div class="books-card">
+          <h4>You Don't Know JS Yet</h4>
+          <p>Kyle Simpson</p>
+          <p>Pages: 279</p>
+          <input type="checkbox" name="read"/>
+          <button type="button" class="remove">Remove</button>
+        </div>
       </div>
-    </div>
-    <div class="books-container">
-      <div class="books-header">
-        <p>Title</p>
-        <p>Author</p>
-        <p>Pages</p>
-        <p>Read</p>
-      </div>
-      <div>
-        <p>You Don't Know JS Yet</p>
-        <p>Kyle Simpson</p>
-        <p>279</p>
-        <input type="checkbox" name="read" id="read" />
-      </div>
-    </div>
+    </main>
+    <script src="script.js"></script>
   </body>
 </html>
