@@ -12,7 +12,7 @@
       <div class="btn-container">
         <div class="logo">
           <h1>Library</h1>
-          <button type="button" id="add-book">+</button>
+          <button type="button" class="add-book">+</button>
         </div>
         <div class="controls-container">
           <button class="controls active" type="button" id="book-table">
@@ -42,13 +42,13 @@
 
       <div class="book-module-container">
         <div class="book-module">
-          <form action="">
+          <form class="book-form" action="">
             <h3>Add a new book</h3>
-            <input type="text" maxlength="100" placeholder="Title">
-            <input type="text" maxlength="100" placeholder="Author">
-            <input type="tel" min="1" max="100" placeholder="Pages">
-            <label>Have you read it? <input type="checkbox"></label>
-            <button type="button">Submit</button>
+            <input type="text" maxlength="100" placeholder="Title" id="title" name="title">
+            <input type="text" maxlength="100" placeholder="Author" id="author" name="author">
+            <input type="tel" min="1" max="100" placeholder="Pages" id="pages" name="pages">
+            <label>Have you read it? <input type="checkbox" id="read" name="read"></label>
+            <button type="submit" class="submit">Submit</button>
           </form>
         </div>
       </div>
