@@ -41,6 +41,11 @@ function removeBook(event) {
   updateBooksDisplay();
 }
 
+function toggleReadStatus(event) {
+  const i = event.target.dataset.index;
+  userLibrary[i].read = !userLibrary[i].read;
+}
+
 function updateBooksDisplay() {
   resetBooksDisplay();
   userLibrary.forEach((e, i) => {
@@ -58,6 +63,7 @@ function updateBooksDisplay() {
     removeBtn.setAttribute('data-index', i);
     read.setAttribute('type', 'checkbox');
     read.setAttribute('name', 'read');
+    read.setAttribute('data-index', i);
     if (e.read) read.setAttribute('checked', 'checked');
 
     title.textContent = e.title;
@@ -66,6 +72,7 @@ function updateBooksDisplay() {
     removeBtn.textContent = 'Remove';
 
     removeBtn.addEventListener('click', removeBook);
+    read.addEventListener('click', toggleReadStatus);
 
     bookCard.appendChild(title);
     bookCard.appendChild(author);
