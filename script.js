@@ -18,6 +18,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function removeBook(e) {
+  console.log(e)
+}
+
 function toggleBookModule() {
   bookModuleContainer.classList.toggle("active");
   overlay.classList.toggle("active");
@@ -32,17 +36,42 @@ function retrieveFormData() {
   );
 }
 
-function addBooksToDisplay() {
+function resetBooksDisplay() {
+  booksContainer.innerHTML = '';
+}
+
+function updateBooksDisplay() {
+  resetBooksDisplay();
   userLibrary.forEach((e) => {
-    booksContainer.innerHTML += `
-      <div class="books-card">
-          <h4>${e.title}</h4>
-          <p>${e.author}</p>
-          <p>${e.pages}</p>
-          <input type="checkbox" name="read" ${e.read ? 'checked' : ''}>
-          <button type="button" class="remove" onclick="">Remove</button>
-      </div>
-    `;
+    const bookCard = document.createElement('div');
+    const title = document.createElement('h4');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
+    const read = document.createElement('input');
+    const removeBtn = document.createElement('button');
+
+    bookCard.classList.add('books-card');
+    removeBtn.classList.add('remove');
+
+    removeBtn.setAttribute('type', 'button');
+    read.setAttribute('type', 'checkbox');
+    read.setAttribute('name', 'read');
+    if (e.read) read.setAttribute('checked', 'checked');
+
+    title.textContent = e.title;
+    author.textContent = e.author;
+    pages.textContent = e.pages;
+    removeBtn.textContent = 'Remove';
+
+    removeBtn.addEventListener('click', removeBook);
+
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(read);
+    bookCard.appendChild(removeBtn);
+
+    booksContainer.appendChild(bookCard);
   });
 }
 
@@ -62,7 +91,7 @@ function validateInputs() {
 function addBookToLibrary(e) {
   if (validateInputs()) return;
   userLibrary.push(retrieveFormData());
-  addBooksToDisplay();
+  updateBooksDisplay();
   toggleBookModule();
   bookForm.reset();
   e.preventDefault();
