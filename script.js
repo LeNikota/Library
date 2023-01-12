@@ -9,17 +9,13 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("read");
 
-const userLibrary = [];
+let userLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-}
-
-function removeBook(e) {
-  console.log(e)
 }
 
 function toggleBookModule() {
@@ -54,6 +50,7 @@ function updateBooksDisplay() {
     removeBtn.classList.add('remove');
 
     removeBtn.setAttribute('type', 'button');
+    removeBtn.setAttribute('data-title', e.title);
     read.setAttribute('type', 'checkbox');
     read.setAttribute('name', 'read');
     if (e.read) read.setAttribute('checked', 'checked');
@@ -73,6 +70,11 @@ function updateBooksDisplay() {
 
     booksContainer.appendChild(bookCard);
   });
+}
+
+function removeBook(event) {
+  userLibrary = userLibrary.filter((element) => element.title !== event.target.dataset.title);
+  updateBooksDisplay();
 }
 
 function validateInputs() {
