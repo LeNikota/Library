@@ -108,6 +108,7 @@ main {
   background-color: var(--element-color);
   border-radius: 10px;
   padding: 20px;
+  word-wrap: break-word;
 }
 
 .books-card h4 {

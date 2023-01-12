@@ -46,7 +46,21 @@ function addBooksToDisplay() {
   });
 }
 
+function validateInputs() {
+  if (titleInput.value === '') {
+    return true;
+  }
+  if (authorInput.value === '') {
+    return true;
+  }
+  if (pagesInput.value === '') {
+    return true;
+  }
+  return false;
+}
+
 function addBookToLibrary(e) {
+  if (validateInputs()) return;
   userLibrary.push(retrieveFormData());
   addBooksToDisplay();
   toggleBookModule();
