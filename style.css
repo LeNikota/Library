@@ -34,6 +34,15 @@ button :is(:focus) {
 input,
 button {
   cursor: pointer;
+  transition: 300ms all;
+}
+
+:is(input, button):hover {
+  filter: opacity(0.8);
+}
+
+:is(input, button):active {
+  filter: opacity(0.6);
 }
 
 main {
@@ -151,7 +160,8 @@ main {
   content: "read";
 }
 
-.overlay, .book-module{
+.overlay,
+.book-module {
   position: fixed;
   display: none;
 }
@@ -164,7 +174,7 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.book-module{
+.book-module {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -182,14 +192,6 @@ main {
   width: 100%;
   height: 30px;
   color: black;
-}
-
-:is(input, button):hover {
-  filter: opacity(0.8);
-}
-
-:is(input, button):active {
-  filter: opacity(0.6);
 }
 
 .book-module form {
@@ -232,5 +234,5 @@ main {
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: clamp(240px,50%,300px);
+  top: clamp(240px, 50%, 300px);
 }

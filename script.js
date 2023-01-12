@@ -1,5 +1,5 @@
 const addBookBtn = document.querySelector('.add-book');
-const bookModuleContainer = document.querySelector('.book-module');
+const bookModule = document.querySelector('.book-module');
 const overlay = document.querySelector('.overlay');
 const bookForm = document.querySelector('.book-form');
 const booksContainer = document.querySelector('.books-container');
@@ -19,7 +19,7 @@ function Book(title, author, pages, read) {
 }
 
 function toggleBookModule() {
-  bookModuleContainer.classList.toggle('active');
+  bookModule.classList.toggle('active');
   overlay.classList.toggle('active');
 }
 
