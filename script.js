@@ -1,13 +1,13 @@
-const addBookBtn = document.querySelector(".add-book");
-const bookModuleContainer = document.querySelector(".book-module");
-const overlay = document.querySelector(".overlay");
+const addBookBtn = document.querySelector('.add-book');
+const bookModuleContainer = document.querySelector('.book-module');
+const overlay = document.querySelector('.overlay');
 const bookForm = document.querySelector('.book-form');
-const booksContainer = document.querySelector(".books-container");
-const submit = document.querySelector(".submit");
-const titleInput = document.getElementById("title");
-const authorInput = document.getElementById("author");
-const pagesInput = document.getElementById("pages");
-const readInput = document.getElementById("read");
+const booksContainer = document.querySelector('.books-container');
+const submit = document.querySelector('.submit');
+const titleInput = document.getElementById('title');
+const authorInput = document.getElementById('author');
+const pagesInput = document.getElementById('pages');
+const readInput = document.getElementById('read');
 
 const userLibrary = [];
 
@@ -19,8 +19,8 @@ function Book(title, author, pages, read) {
 }
 
 function toggleBookModule() {
-  bookModuleContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  bookModuleContainer.classList.toggle('active');
+  overlay.classList.toggle('active');
 }
 
 function retrieveFormData() {
@@ -106,9 +106,9 @@ function addBookToLibrary(e) {
   e.preventDefault();
 }
 
-addBookBtn.addEventListener("click", toggleBookModule);
-overlay.addEventListener("click", toggleBookModule);
-submit.addEventListener("click", addBookToLibrary);
+addBookBtn.addEventListener('click', toggleBookModule);
+overlay.addEventListener('click', toggleBookModule);
+submit.addEventListener('click', addBookToLibrary);
 
 window.onload = () => {
   userLibrary.push(new Book("You Don't Know JS Yet", 'Kyle Simpson', '279', true));
