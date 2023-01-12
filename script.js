@@ -9,7 +9,7 @@ const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
 const readInput = document.getElementById("read");
 
-let userLibrary = [];
+const userLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -36,9 +36,14 @@ function resetBooksDisplay() {
   booksContainer.innerHTML = '';
 }
 
+function removeBook(event) {
+  userLibrary.splice(event.target.dataset.index, 1);
+  updateBooksDisplay();
+}
+
 function updateBooksDisplay() {
   resetBooksDisplay();
-  userLibrary.forEach((e) => {
+  userLibrary.forEach((e, i) => {
     const bookCard = document.createElement('div');
     const title = document.createElement('h4');
     const author = document.createElement('p');
@@ -50,14 +55,14 @@ function updateBooksDisplay() {
     removeBtn.classList.add('remove');
 
     removeBtn.setAttribute('type', 'button');
-    removeBtn.setAttribute('data-title', e.title);
+    removeBtn.setAttribute('data-index', i);
     read.setAttribute('type', 'checkbox');
     read.setAttribute('name', 'read');
     if (e.read) read.setAttribute('checked', 'checked');
 
     title.textContent = e.title;
     author.textContent = e.author;
-    pages.textContent = e.pages;
+    pages.textContent = `Pages: ${e.pages}`;
     removeBtn.textContent = 'Remove';
 
     removeBtn.addEventListener('click', removeBook);
@@ -70,11 +75,6 @@ function updateBooksDisplay() {
 
     booksContainer.appendChild(bookCard);
   });
-}
-
-function removeBook(event) {
-  userLibrary = userLibrary.filter((element) => element.title !== event.target.dataset.title);
-  updateBooksDisplay();
 }
 
 function validateInputs() {
@@ -102,3 +102,8 @@ function addBookToLibrary(e) {
 addBookBtn.addEventListener("click", toggleBookModule);
 overlay.addEventListener("click", toggleBookModule);
 submit.addEventListener("click", addBookToLibrary);
+
+window.onload = () => {
+  userLibrary.push(new Book("You Don't Know JS Yet", 'Kyle Simpson', '279', true));
+  updateBooksDisplay();
+};

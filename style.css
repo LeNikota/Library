@@ -224,3 +224,13 @@ main {
   font-size: 1.2rem;
   border-radius: 5px;
 }
+
+.books-container:empty::before {
+  content: "(¬_¬)";
+  font-size: 4rem;
+  font-weight: bolder;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: clamp(240px,50%,300px);
+}
