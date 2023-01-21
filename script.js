@@ -1,5 +1,5 @@
 const addBookBtn = document.querySelector('.add-book');
-const bookModule = document.querySelector('.book-module');
+const bookMenu = document.querySelector('.book-menu');
 const overlay = document.querySelector('.overlay');
 const bookForm = document.querySelector('.book-form');
 const booksContainer = document.querySelector('.books-container');
@@ -11,15 +11,17 @@ const readInput = document.getElementById('read');
 
 const userLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
-function toggleBookModule() {
-  bookModule.classList.toggle('active');
+function toggleBookMenu() {
+  bookMenu.classList.toggle('active');
   overlay.classList.toggle('active');
 }
 
@@ -101,13 +103,13 @@ function addBookToLibrary(e) {
   if (validateInputs()) return;
   userLibrary.push(retrieveFormData());
   updateBooksDisplay();
-  toggleBookModule();
+  toggleBookMenu();
   bookForm.reset();
   e.preventDefault();
 }
 
-addBookBtn.addEventListener('click', toggleBookModule);
-overlay.addEventListener('click', toggleBookModule);
+addBookBtn.addEventListener('click', toggleBookMenu);
+overlay.addEventListener('click', toggleBookMenu);
 submit.addEventListener('click', addBookToLibrary);
 
 window.onload = () => {

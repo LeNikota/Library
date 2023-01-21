@@ -161,7 +161,7 @@ main {
 }
 
 .overlay,
-.book-module {
+.book-menu {
   position: fixed;
   display: none;
 }
@@ -174,19 +174,19 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.book-module {
+.book-menu {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
-:is(.book-module, .overlay).active {
+:is(.book-menu, .overlay).active {
   display: block;
 }
 
 .remove,
-.book-module button {
+.book-menu button {
   margin: 10px 0 0 0;
   border: none;
   width: 100%;
@@ -194,7 +194,7 @@ main {
   color: black;
 }
 
-.book-module form {
+.book-menu form {
   display: grid;
   justify-items: center;
   gap: 20px;
@@ -205,11 +205,11 @@ main {
   font-size: 1.3rem;
 }
 
-.book-module h3 {
+.book-menu h3 {
   margin: 5px 0 5px 0;
 }
 
-.book-module input:not([type="checkbox"]) {
+.book-menu input:not([type="checkbox"]) {
   border: none;
   height: 25px;
   width: 200px;
@@ -221,7 +221,7 @@ main {
   cursor: text;
 }
 
-.book-module button {
+.book-menu button {
   background-color: var(--checkbox-read);
   font-size: 1.2rem;
   border-radius: 5px;
