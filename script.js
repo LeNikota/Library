@@ -86,26 +86,38 @@ function updateBooksDisplay() {
   });
 }
 
-function validateInputs() {
-  if (titleInput.value === '') {
-    return true;
-  }
-  if (authorInput.value === '') {
-    return true;
-  }
-  if (pagesInput.value === '') {
-    return true;
-  }
-  return false;
-}
-
 function addBookToLibrary(e) {
-  if (validateInputs()) return;
+  e.preventDefault();
+  if (!checkValidity()) {
+    bookForm.reportValidity();
+    return;
+  }
   userLibrary.push(retrieveFormData());
   updateBooksDisplay();
   toggleBookMenu();
   bookForm.reset();
-  e.preventDefault();
+}
+
+function checkValidity() {
+  if (titleInput.validity.valueMissing || titleInput.validity.tooLong) {
+    titleInput.setCustomValidity('Title must be within range of 1-30 characters.');
+    return false;
+  }
+  titleInput.setCustomValidity('');
+
+  if (authorInput.validity.valueMissing || authorInput.validity.tooLong) {
+    authorInput.setCustomValidity('Author must be within range of 1-30 characters.');
+    return false;
+  }
+  authorInput.setCustomValidity('');
+
+  if (pagesInput.validity.valueMissing || pagesInput.validity.tooLong) {
+    pagesInput.setCustomValidity('Pages must be within range of 1-10 numerical characters.');
+    return false;
+  }
+  pagesInput.setCustomValidity('');
+
+  return true;
 }
 
 addBookBtn.addEventListener('click', toggleBookMenu);
